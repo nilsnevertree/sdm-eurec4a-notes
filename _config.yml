@@ -27,7 +27,8 @@ github_username:  nilsnevertree
 
 # Build settings
 # theme: minima
-theme: jekyll-theme-minima
+theme: minima
+remote_theme: minima
 plugins:
   - jekyll-feed
 relative_links:
