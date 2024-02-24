@@ -23,7 +23,7 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
 
-title: SDM-EUREC4A Notes
+title: SDM-EUREC4A Notes BLABLA
 description: >- # this means to ignore newlines until "baseurl:"
   This is a collection of notes and resources realted to the SDM-EUREC4A repository.
 # baseurl: "" # the subpath of your site, e.g. /blog
