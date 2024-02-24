@@ -1,0 +1,66 @@
+cloud:
+  cloud_id: 18
+  dropsonde_distance:
+    max_spatial_distance: 100
+    max_temporal_distance: 3 hours
+  identification_type: clusters
+  split_radius: 4.5e-05
+particle_size_distribution:
+  parameters:
+    geometric_means:
+    - 0.0001304169785725949
+    - 2.0697867776705365e-06
+    geometric_sigmas:
+    - 1.6746895810382312
+    - 1.6999999990440153
+    number_concentration: 64806.29789479955
+    scale_factors:
+    - 575.2796379127539
+    - 64231.0182568868
+  type: LnNormal
+thermodynamics:
+  air_temperature:
+    parameters:
+      f_0:
+      - 299.27736135104163
+      slope_1:
+      - -0.009335952150225141
+      slope_2:
+      - -0.00568146191310309
+      slopes:
+      - -0.009335952150225141
+      - -0.00568146191310309
+      x_split:
+      - 670.4288307997898
+    type: SplitLinear
+  potential_temperature:
+    parameters:
+      f_0:
+      - 297.9511075393682
+      slope_1:
+      - 0.0003211090035269639
+      slope_2:
+      - 0.004131309994766889
+      slopes:
+      - 0.0003211090035269639
+      - 0.004131309994766889
+      x_split:
+      - 670.4288307997898
+    type: SplitLinear
+  specific_humidity:
+    parameters:
+      f_0:
+      - 0.015470748342850105
+      slope_1:
+      - -1.7005237354550889e-06
+      slope_2:
+      - -4.560658011429824e-06
+      slopes:
+      - -1.7005237354550889e-06
+      - -4.560658011429824e-06
+      x_split:
+      - 670.4288307997898
+    type: SplitLinear
+version_control:
+  date: '2024-02-15 14:34:32.849978+00:00'
+  git_hash: ee9a0035831b3a08e990b7a5b838da5ce1ba9457
