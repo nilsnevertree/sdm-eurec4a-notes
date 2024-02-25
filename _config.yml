@@ -26,7 +26,7 @@ kramdown:
 title: SDM-EUREC4A Notes BLABLA
 description: >- # this means to ignore newlines until "baseurl:"
   This is a collection of notes and resources realted to the SDM-EUREC4A repository.
-baseurl: "sdm-eurec4a-notes/" # the subpath of your site, e.g. /blog
+baseurl: "/sdm-eurec4a-notes/" # the subpath of your site, e.g. /blog
 url: "https://nilsnevertree.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  nilsnevertree
 
