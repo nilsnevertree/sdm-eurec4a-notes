@@ -77,7 +77,7 @@ def findReplaceRelativePath(
     for path, dirs, files in os.walk(os.path.abspath(directory)):
         for filename in fnmatch.filter(files, filePattern):
             filepath = os.path.join(path, filename)
-            print(filepath)
+            # print(filepath)
             with open(filepath) as f:
                 s = f.read()
             # Extract the full substring from the original string
@@ -100,21 +100,21 @@ def findReplaceRelativePath(
                 f.write(res)
 #%%
 # Create an ArgumentParser object
-# parser = argparse.ArgumentParser(description='Update Joplin export')
+parser = argparse.ArgumentParser(description='Update Joplin export')
 
 # # Add arguments
-# parser.add_argument('--origin', type=str, help='Origin directory', default=r"C:\Users\Niebaum\Desktop\joplin_export")
-# parser.add_argument('--destination', type=str, help='Destination directory', default=r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
+parser.add_argument('--origin', type=str, help='Origin directory', default=r"C:\Users\Niebaum\Desktop\joplin_export")
+parser.add_argument('--destination', type=str, help='Destination directory', default=r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
 
-# # Parse the arguments
-# args = parser.parse_args()
+# Parse the arguments
+args = parser.parse_args()
 
-# # Define the directories
-# origin_dir = Path(args.origin)
-# destination_dir = Path(args.destination)
+# Define the directories
+origin_dir = Path(args.origin)
+destination_dir = Path(args.destination)
 # #%%
-origin_dir = Path(r"C:\Users\Niebaum\Desktop\joplin_export")
-destination_dir = Path(r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
+# origin_dir = Path(r"C:\Users\Niebaum\Desktop\joplin_export")
+# destination_dir = Path(r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
 
 # if input(f"\n- Origin: {origin_dir}"
 #       f"\n- Destination: {destination_dir}"
@@ -172,14 +172,27 @@ findReplace(
 
 #%%
 # Remove the header string from the html files
-print(f"\nRemoving the header string from the html files ...")
-header_str = "<!DOCTYPE html>"
-findReplace(
-    directory=new_html_dir,
-    find=header_str,
-    replace="",
-    filePattern="*.html"
-)
+
+# %%
+
+for path, dirs, files in os.walk(new_html_dir):
+    for filename in files:
+        if filename.endswith(".html"):
+            filepath = os.path.join(path, filename)
+            with open(filepath, "r") as f:
+                lines = f.readlines()
+            with open(filepath, "w") as f:
+                f.writelines(lines[12:-4])
+
+
+# print(f"\nRemoving the header string from the html files ...")
+# header_str = "<!DOCTYPE html>"
+# findReplace(
+#     directory=new_html_dir,
+#     find=header_str,
+#     replace="",
+#     filePattern="*.html"
+# )
 #%%
 # # Prettyfy html
 # # !!!!!!!! THIS NEEDS TO BE DONE FIRST !!!!!!!!!
@@ -203,4 +216,3 @@ findReplaceRelativePath(
     directory=new_html_dir,
     filePattern="*.html"
 )
-# %%
