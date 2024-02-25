@@ -68,7 +68,7 @@ def findReplaceRelativePath(
     """
 
     # Regex for the full substring
-    pattern_full = r"(\.\./)*_resources/([a-zA-Z0-9])+\.(png|jpg|gif)"
+    pattern_full = r"(\.\./)*_resources/([a-zA-Z0-9])+\.(png|jpg|gif|yaml)"
     regex_full = re.compile(pattern_full)
     # regex for the _resources pattern
     pattern_resource = r"(\.\./)*_resources"
