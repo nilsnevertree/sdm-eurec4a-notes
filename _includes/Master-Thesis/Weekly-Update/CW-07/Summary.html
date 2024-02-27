@@ -438,21 +438,6 @@
 				.mermaid-export-graph:hover { background-color: #CBDAF1 !important; }</style><div id="rendered-md"><p>In order to get an idea of how the rain evaporation changes between clouds (intra-clouds), CLEO was initialized for some individual clouds.</p>
 <p>In more detail, <a data-from-md data-resource-id='aed22a99f6d34c838aa0260daab971c4' href='joplin://aed22a99f6d34c838aa0260daab971c4'>Cloud clusters</a> were used.</p>
 <hr>
-<h4 id="a-few-technical-settings-for-this">A few technical settings for this:</h4>
-<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="yaml" data-joplin-source-open="```yaml&#10;" data-joplin-source-close="&#10;```">cloud_id: xxx
-dropsonde_distance:
-    max_spatial_distance: 100 #m
-    max_temporal_distance: 3 hours
-identification_type: clusters
-split_radius: 4.5e-05 #m</pre><pre class="hljs"><code><span class="hljs-attr">cloud_id:</span> <span class="hljs-string">xxx</span>
-<span class="hljs-attr">dropsonde_distance:</span>
-    <span class="hljs-attr">max_spatial_distance:</span> <span class="hljs-number">100</span> <span class="hljs-comment">#m</span>
-    <span class="hljs-attr">max_temporal_distance:</span> <span class="hljs-number">3</span> <span class="hljs-string">hours</span>
-<span class="hljs-attr">identification_type:</span> <span class="hljs-string">clusters</span>
-<span class="hljs-attr">split_radius:</span> <span class="hljs-number">4.5e-05</span> <span class="hljs-comment">#m</span></code></pre></div>
-<p><a data-from-md title='{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}' href='{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}'>input_CLEO.yaml</a></p>
-<p>Also the clusters were create with removing cloud holes of more than 5 seconds.</p>
-<hr>
 <h2 id="results">Results</h2>
 <p>Below, you can find the properties of all the clusters identified.</p>
 <ul>
@@ -466,6 +451,16 @@ split_radius: 4.5e-05 #m</pre><pre class="hljs"><code><span class="hljs-attr">cl
 <li>For 10 cloud clusters with the largest LWC, the annotations mark their given <code class="inline-code">ID</code> to identify them .</li>
 </ul>
 <img src="{{"assets/images/77299ae7387e4e459c35c04a9e3881a3.png" | relative_url }}" alt="Clusters" width="450" class="jop-noMdConv"/>
+<p>For these clusters, the dropsonde measurmensta were chosen which are not further away then 100 km and were launched not more than 3h befor or after the ATR flew through the cloud cluster.</p>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="yaml" data-joplin-source-open="```yaml&#10;" data-joplin-source-close="&#10;```">dropsonde_distance:
+    max_spatial_distance: 100 #km
+    max_temporal_distance: 3 hours
+identification_type: clusters
+split_radius: 4.5e-05 #m</pre><pre class="hljs"><code><span class="hljs-attr">dropsonde_distance:</span>
+    <span class="hljs-attr">max_spatial_distance:</span> <span class="hljs-number">100</span> <span class="hljs-comment">#km</span>
+    <span class="hljs-attr">max_temporal_distance:</span> <span class="hljs-number">3</span> <span class="hljs-string">hours</span>
+<span class="hljs-attr">identification_type:</span> <span class="hljs-string">clusters</span>
+<span class="hljs-attr">split_radius:</span> <span class="hljs-number">4.5e-05</span> <span class="hljs-comment">#m</span></code></pre></div>
 <p>Below two examples of cloud clusters were used as input to CLEO.</p>
 <ul>
 <li><em>1st column:</em> The mid date of the cloud cluster and its <code class="inline-code">ID</code> to relate it to the figure shown above.</li>
@@ -477,6 +472,7 @@ split_radius: 4.5e-05 #m</pre><pre class="hljs"><code><span class="hljs-attr">cl
 </ul>
 </li>
 </ul>
+<p>The full input file to init. CLEO can be found downloaded here: <a data-from-md title='{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}' href='{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}'>input_CLEO.yaml</a>.</p>
 <p>These fittings were used as input data to CLEO. The super droplet radii have a size range of <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{-7}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>7</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-7}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">7</span></span></span></span></span></span></span></span></span></span></span></span></span> to <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{-3}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span> m, or in other words  <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{-6}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span></span> to <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{3}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">10^{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span> µm.</p>
 <ul>
 <li><em>4th column:</em> The result of the mass concentration in each vertical bin can bee seen in the right column. Thanks Clara for the code to make this plot.</li>
