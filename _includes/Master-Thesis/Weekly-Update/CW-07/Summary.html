@@ -1,5 +1,26 @@
-<style>
-		/* https://necolas.github.io/normalize.css/ */
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link href="{{/assets/pluginAssets/katex/katex.css | baseurl}}" rel="stylesheet"/>
+   <script src="{{/assets/pluginAssets/mermaid/mermaid.min.js | baseurl}}" type="application/javascript">
+   </script>
+   <script src="{{/assets/pluginAssets/mermaid/mermaid_render.js | baseurl}}" type="application/javascript">
+   </script>
+   <link href="{{/assets/pluginAssets/highlight.js/atom-one-light.css | baseurl}}" rel="stylesheet"/>
+   <title>
+    Summary
+   </title>
+  </meta>
+ </head>
+ <body>
+  <div class="exported-note">
+   <div class="exported-note-title">
+    Summary
+   </div>
+   <style>
+    /* https://necolas.github.io/normalize.css/ */
 		html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 		article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}
 		pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}
@@ -435,197 +456,851 @@
 .mermaid { background-color: white; width: 640px; }
 .mermaid-export-graph { visibility: hidden; } 
 				.joplin-editable:hover .mermaid-export-graph { visibility: visible; }
-				.mermaid-export-graph:hover { background-color: #CBDAF1 !important; }</style><div id="rendered-md"><p>In order to get an idea of how the rain evaporation changes between clouds (intra-clouds), CLEO was initialized for some individual clouds.</p>
-<p>In more detail, <a data-from-md data-resource-id='aed22a99f6d34c838aa0260daab971c4' href='joplin://aed22a99f6d34c838aa0260daab971c4'>Cloud clusters</a> were used.</p>
-<hr>
-<h2 id="results">Results</h2>
-<p>Below, you can find the properties of all the clusters identified.</p>
-<ul>
-<li>The size of the circles represents their LWC.</li>
-<li>Only clusters are shown which have
-<ul>
-<li>altitude between 700 and 1100m and</li>
-<li>with a vertical extent of less than 50m.</li>
-</ul>
-</li>
-<li>For 10 cloud clusters with the largest LWC, the annotations mark their given <code class="inline-code">ID</code> to identify them .</li>
-</ul>
-<img src="{{"assets/images/77299ae7387e4e459c35c04a9e3881a3.png" | relative_url }}" alt="Clusters" width="450" class="jop-noMdConv"/>
-<p>For these clusters, the dropsonde measurmensta were chosen which are not further away then 100 km and were launched not more than 3h befor or after the ATR flew through the cloud cluster.</p>
-<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="yaml" data-joplin-source-open="```yaml&#10;" data-joplin-source-close="&#10;```">dropsonde_distance:
+				.mermaid-export-graph:hover { background-color: #CBDAF1 !important; }
+   </style>
+   <div id="rendered-md">
+    <p>
+     In order to get an idea of how the rain evaporation changes between clouds (intra-clouds), CLEO was initialized for some individual clouds.
+    </p>
+    <p>
+     In more detail,
+     <a data-from-md="" data-resource-id="aed22a99f6d34c838aa0260daab971c4" href="joplin://aed22a99f6d34c838aa0260daab971c4">
+      Cloud clusters
+     </a>
+     were used.
+    </p>
+    <hr/>
+    <h2 id="results">
+     Results
+    </h2>
+    <p>
+     Below, you can find the properties of all the clusters identified.
+    </p>
+    <ul>
+     <li>
+      The size of the circles represents their LWC.
+     </li>
+     <li>
+      Only clusters are shown which have
+      <ul>
+       <li>
+        altitude between 700 and 1100m and
+       </li>
+       <li>
+        with a vertical extent of less than 50m.
+       </li>
+      </ul>
+     </li>
+     <li>
+      For 10 cloud clusters with the largest LWC, the annotations mark their given
+      <code class="inline-code">
+       ID
+      </code>
+      to identify them .
+     </li>
+    </ul>
+    <img alt="Clusters" class="jop-noMdConv" src="{{"assets/images/77299ae7387e4e459c35c04a9e3881a3.png" | relative_url }}" width="450"/>
+    <p>
+     For these clusters, the dropsonde measurmensta were chosen which are not further away then 100 km and were launched not more than 3h befor or after the ATR flew through the cloud cluster.
+    </p>
+    <div class="joplin-editable">
+     <pre class="joplin-source" data-joplin-language="yaml" data-joplin-source-close="
+```" data-joplin-source-open="```yaml
+">dropsonde_distance:
     max_spatial_distance: 100 #km
     max_temporal_distance: 3 hours
 identification_type: clusters
-split_radius: 4.5e-05 #m</pre><pre class="hljs"><code><span class="hljs-attr">dropsonde_distance:</span>
+split_radius: 4.5e-05 #m</pre>
+     <pre class="hljs"><code><span class="hljs-attr">dropsonde_distance:</span>
     <span class="hljs-attr">max_spatial_distance:</span> <span class="hljs-number">100</span> <span class="hljs-comment">#km</span>
     <span class="hljs-attr">max_temporal_distance:</span> <span class="hljs-number">3</span> <span class="hljs-string">hours</span>
 <span class="hljs-attr">identification_type:</span> <span class="hljs-string">clusters</span>
-<span class="hljs-attr">split_radius:</span> <span class="hljs-number">4.5e-05</span> <span class="hljs-comment">#m</span></code></pre></div>
-<p>Below two examples of cloud clusters were used as input to CLEO.</p>
-<ul>
-<li><em>1st column:</em> The mid date of the cloud cluster and its <code class="inline-code">ID</code> to relate it to the figure shown above.</li>
-<li><em>2nd column:</em> The corresponding PSD for the clusters and LogNormal fitting is shown. Cloud and drizzle droplets are  seperated from rain droplets at <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">4.5 \cdot 10^{-5} m</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4.5</mn><mo>⋅</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">4.5 \cdot 10^{-5} m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">5</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">m</span></span></span></span></span> and the fitting is performed individually.</li>
-<li><em>3rd column:</em> For the thermodynamical profiles of <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">T</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span></span>, <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">q</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span></span> and <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">\theta</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span></span>, a splitted linear fit was preformed.
-<ul>
-<li>The split level is indicated by the dashed black line.</li>
-<li>The mean high of the ATR cloud measurements is shown as a dashed red line.</li>
-</ul>
-</li>
-</ul>
-<p>The full input file to init. CLEO can be found downloaded here: <a data-from-md title='{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}' href='{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}'>input_CLEO.yaml</a>.</p>
-<p>These fittings were used as input data to CLEO. The super droplet radii have a size range of <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{-7}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>7</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-7}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">7</span></span></span></span></span></span></span></span></span></span></span></span></span> to <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{-3}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span> m, or in other words  <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{-6}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span></span> to <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{3}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">10^{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span> µm.</p>
-<ul>
-<li><em>4th column:</em> The result of the mass concentration in each vertical bin can bee seen in the right column. Thanks Clara for the code to make this plot.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>PSD</th>
-<th>Thermodynamics</th>
-<th>Model results</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>26/01/2020 13:00  <br class="jop-noMdConv"/><br class="jop-noMdConv"/>(Cluster 18)</td>
-<td><img src="{{"assets/images/80059074afde4804a38859b903594490.png" | relative_url }}" alt="fitted_psd.png" height="200" class="jop-noMdConv" width="355"/></td>
-<td><img src="{{"assets/images/f7bb56654e9c4f77b0104b0eac8f355f.png" | relative_url }}" alt="fitted_thermodynamics.png" height="200" class="jop-noMdConv" width="600"/></td>
-<td><img src="{{"assets/images/41b4ea017ad8402c9f000dd3fa6324e2.gif" | relative_url }}" alt="rain1d_massconc1d.gif" height="202" class="jop-noMdConv" width="177"/></td>
-</tr>
-<tr>
-<td>11/02/2020 12:06  <br class="jop-noMdConv"/><br class="jop-noMdConv"/>(Cluster 301)</td>
-<td><img src="{{"assets/images/9af643f45a8e4532b2d0be543985dfce.png" | relative_url }}" alt="fitted_psd.png" height="200" class="jop-noMdConv" width="355"/></td>
-<td><img src="{{"assets/images/c4ca4309a614404e926367e9ff6cb076.png" | relative_url }}" alt="fitted_thermodynamics.png" height="200" class="jop-noMdConv" width="599"/></td>
-<td><img src="{{"assets/images/cdc69b32fdd6457dbc44511341de011b.gif" | relative_url }}" alt="rain1d_massconc1d.gif" height="201" class="jop-noMdConv" width="176"/></td>
-</tr>
-</tbody>
-</table>
-<p>It can be seen, that the cloud 18, shows less raining out.<br>
-This is suprising on a first view, because for cloud cluster 18, there seem to be much more rain droplets measured. But for cloud cluster 301, the fitted distribution is much broader. Thus also much larger rain droplets of <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">10^{3}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">10^{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span>µm may exist. As their mass scales with <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">r^3</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>r</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">r^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>, the make a hugh part of the rain falling out of the cloud.</p>
-<p>This changes after some minutes, when these big droplets reach the bottom of the domain.</p>
-<p>It should be though of, how the fitting can be optimized to handle this.</p>
-<p>Below one can also see some more details.</p>
-<ul>
-<li><em>1st col</em>: Evolution of the PSD over time (time on y axis, droplet radi x axis). The colorbar represents the amount of cloud and drizzle or rain droplets.</li>
-<li><em>2nd col</em>: Thermodyncamic input to CLEO.<br>
-<strong>Note</strong>: It seens the pot. temperature seems to be not perfectly in line with the measurements.</li>
-<li><em>3rd col</em>: A few example Superdroplets and their evoluation over time.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>PSD</th>
-<th>Thermodynamics</th>
-<th>Model results</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>26/01/2020 13:00  <br class="jop-noMdConv"/><br class="jop-noMdConv"/>(Cluster 18)</td>
-<td><img src="{{"assets/images/d01bf8d195e54e79a4332de55b724672.png" | relative_url }}" alt="PSD_radius_time.png" width="352" height="211" class="jop-noMdConv"/></td>
-<td><img src="{{"assets/images/62d69e44dca540219cd4cb7f634302c4.png" | relative_url }}" alt="thermo1dalltimeprofiles.png" width="587" height="288" class="jop-noMdConv"/></td>
-<td><img src="{{"assets/images/d170a0395938461ea8dba1b9bd772ab0.png" | relative_url }}" alt="rain1d_randomsample.png" width="324" height="195" class="jop-noMdConv"/></td>
-</tr>
-<tr>
-<td>11/02/2020 12:06  <br class="jop-noMdConv"/><br class="jop-noMdConv"/>(Cluster 301)</td>
-<td><img src="{{"assets/images/241c861ec2cd4825a3655fd8c058029b.png" | relative_url }}" alt="PSD_radius_time.png" width="353" height="212" class="jop-noMdConv"/></td>
-<td><img src="{{"assets/images/205536b2cc2d49d799a896f44e085378.png" | relative_url }}" alt="thermo1dalltimeprofiles.png" width="591" height="290" class="jop-noMdConv"/></td>
-<td><img src="{{"assets/images/adaf6bf889564617890af4bc0f67530c.png" | relative_url }}" alt="rain1d_randomsample.png" width="326" height="196" class="jop-noMdConv"/></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h1 id="draft-whats-next">Draft: What's next?</h1>
-<h3 id="todo">ToDo</h3>
-<ul>
-<li>Estimate the rain evaporation rate
-<ul>
-<li>Can we use some direct model output for this?</li>
-<li>We can also extract data of all super droplets.</li>
-</ul>
-</li>
-<li>Read papers on how the distriubutions are fitted.</li>
-<li>Use the same attempt as Mampi Sakar.</li>
-</ul>
-<h3 id="current-statements">Current statements</h3>
-<p>The simulations work well and produce <strong>?resonable?</strong> results.</p>
-<ul>
-<li>It seems to use the whole cloud data as a basis for a fit is not super accurate.
-<ul>
-<li>Large drops rule the raining rate.</li>
-<li>It is obvious, that the rain rate does depend on the general shape of the fit.</li>
-</ul>
-</li>
-<li>The estiamtion of large droplets is very difficult.
-<ul>
-<li>Only a few measurments.</li>
-<li>How do we handle the distribution &quot;edges&quot;.</li>
-</ul>
-</li>
-<li>It should be discussed, if the individual cloud case is really good to analyse differences.
-<ul>
-<li>Maybe as Mampi Sakar suggested, one should use a fit for each day and then make sure, that the total mass is the same in the model.</li>
-</ul>
-</li>
-</ul>
-<h3 id="to-analyse">To analyse:</h3>
-<ul>
-<li>What is the difference in evaporation of small and large droplets?</li>
-<li>How large is the total evaporation rate?
-<ul>
-<li>Currently the estimation of the distribution is a fit from all timesteps in the cloud!</li>
-<li><mark><strong>It needs to be scaled to get the total rain rate</strong></mark><br>
-Assume the Mass at CLEO initilization is <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">m_{i}</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">m_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>. The total mass of the cloud droplets is <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">m_c</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">m_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>.<br>
-Then the scale factor should be simply <span class="joplin-editable"><span class="joplin-source" data-joplin-language="katex" data-joplin-source-open="$" data-joplin-source-close="$">\lambda = m_c / m_i</span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><msub><mi>m</mi><mi>c</mi></msub><mi mathvariant="normal">/</mi><msub><mi>m</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\lambda = m_c / m_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><br>
-Or is this somehow <em>directly</em> related to the duration of the cloud?</li>
-</ul>
-</li>
-<li>How large is the spread in the evaporation rate between different cloud?</li>
-</ul>
-<h1 id="questions">Questions</h1>
-<ul>
-<li>Can we extract the droplet evaporation as direct output of the model calculation?</li>
-<li>How can I create a xarray Dataset from the zarr file?
-<ul>
-<li>Is it correct that with a simple load by xarray, droplets are listed multiple times?</li>
-</ul>
-</li>
-<li>It seems to use the whole cloud data as a basis for a fit is not super accurate.</li>
-<li>The estiamtion of large droplets is very difficult.
-<ul>
-<li>only a few measurments.</li>
-<li>How do we handle the distribution edges.</li>
-</ul>
-</li>
-</ul>
-<h3 id="cleo">CLEO</h3>
-<ul>
-<li>Can I compile CLEO once and run it with different input files?
-<ul>
-<li>Because the compilation takes longer then the run itself :D</li>
-</ul>
-</li>
-<li>How are the vertical boxes created exactly?
-<ul>
-<li>I have to admit, that I struggel from time to time, to get the correct<br>
-Total number of SD<br>
-Number of gridboxes</li>
-</ul>
-</li>
-<li>Can the output be written to any path or is there a limitation?
-<ul>
-<li>This would help to run experiments</li>
-</ul>
-</li>
-<li>As state above:
-<ul>
-<li>How can I create a xr.Dataset from the zarr file.</li>
-<li>What exactly is written in it.</li>
-</ul>
-</li>
-</ul>
-
-                    <div id="backs"></div>
-                    <style onload="                     console.log('sending message');                     webviewApi.postMessage('backlinks', {type:'getContent'}).then(function(response) {                         console.info('Got response in Markdown-it content script: ' + response);                         document.getElementById('backs').innerHTML=response;                     });                     return false;                 "/>
+<span class="hljs-attr">split_radius:</span> <span class="hljs-number">4.5e-05</span> <span class="hljs-comment">#m</span></code></pre>
+    </div>
+    <p>
+     Below two examples of cloud clusters were used as input to CLEO.
+    </p>
+    <ul>
+     <li>
+      <em>
+       1st column:
+      </em>
+      The mid date of the cloud cluster and its
+      <code class="inline-code">
+       ID
+      </code>
+      to relate it to the figure shown above.
+     </li>
+     <li>
+      <em>
+       2nd column:
+      </em>
+      The corresponding PSD for the clusters and LogNormal fitting is shown. Cloud and drizzle droplets are  seperated from rain droplets at
+      <span class="joplin-editable">
+       <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+        4.5 \cdot 10^{-5} m
+       </span>
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mn>
+             4.5
+            </mn>
+            <mo>
+             &sdot;
+            </mo>
+            <mn>
+             1
+            </mn>
+            <msup>
+             <mn>
+              0
+             </mn>
+             <mrow>
+              <mo>
+               &minus;
+              </mo>
+              <mn>
+               5
+              </mn>
+             </mrow>
+            </msup>
+            <mi>
+             m
+            </mi>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            4.5 \cdot 10^{-5} m
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      and the fitting is performed individually.
+     </li>
+     <li>
+      <em>
+       3rd column:
+      </em>
+      For the thermodynamical profiles of
+      <span class="joplin-editable">
+       <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+        T
+       </span>
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mi>
+             T
+            </mi>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            T
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      ,
+      <span class="joplin-editable">
+       <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+        q
+       </span>
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mi>
+             q
+            </mi>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            q
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      and
+      <span class="joplin-editable">
+       <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+        \theta
+       </span>
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mi>
+             &theta;
+            </mi>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            \theta
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      , a splitted linear fit was preformed.
+      <ul>
+       <li>
+        The split level is indicated by the dashed black line.
+       </li>
+       <li>
+        The mean high of the ATR cloud measurements is shown as a dashed red line.
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <p>
+     The full input file to init. CLEO can be found downloaded here:
+     <a data-from-md="" href="{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}" title="{{"assets/images/1d6fd264127847ccb4e546e209180824.yaml" | relative_url }}">
+      input_CLEO.yaml
+     </a>
+     .
+    </p>
+    <p>
+     These fittings were used as input data to CLEO. The super droplet radii have a size range of
+     <span class="joplin-editable">
+      <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+       10^{-7}
+      </span>
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mn>
+            1
+           </mn>
+           <msup>
+            <mn>
+             0
+            </mn>
+            <mrow>
+             <mo>
+              &minus;
+             </mo>
+             <mn>
+              7
+             </mn>
+            </mrow>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           10^{-7}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     to
+     <span class="joplin-editable">
+      <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+       10^{-3}
+      </span>
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mn>
+            1
+           </mn>
+           <msup>
+            <mn>
+             0
+            </mn>
+            <mrow>
+             <mo>
+              &minus;
+             </mo>
+             <mn>
+              3
+             </mn>
+            </mrow>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           10^{-3}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     m, or in other words
+     <span class="joplin-editable">
+      <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+       10^{-6}
+      </span>
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mn>
+            1
+           </mn>
+           <msup>
+            <mn>
+             0
+            </mn>
+            <mrow>
+             <mo>
+              &minus;
+             </mo>
+             <mn>
+              6
+             </mn>
+            </mrow>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           10^{-6}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     to
+     <span class="joplin-editable">
+      <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+       10^{3}
+      </span>
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mn>
+            1
+           </mn>
+           <msup>
+            <mn>
+             0
+            </mn>
+            <mn>
+             3
+            </mn>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           10^{3}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     &micro;m.
+    </p>
+    <ul>
+     <li>
+      <em>
+       4th column:
+      </em>
+      The result of the mass concentration in each vertical bin can bee seen in the right column. Thanks Clara for the code to make this plot.
+     </li>
+    </ul>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Date
+       </th>
+       <th>
+        PSD
+       </th>
+       <th>
+        Thermodynamics
+       </th>
+       <th>
+        Model results
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        26/01/2020 13:00
+        <br class="jop-noMdConv"/>
+        <br class="jop-noMdConv"/>
+        (Cluster 18)
+       </td>
+       <td>
+        <img alt="fitted_psd.png" class="jop-noMdConv" height="200" src="{{"assets/images/80059074afde4804a38859b903594490.png" | relative_url }}" width="355"/>
+       </td>
+       <td>
+        <img alt="fitted_thermodynamics.png" class="jop-noMdConv" height="200" src="{{"assets/images/f7bb56654e9c4f77b0104b0eac8f355f.png" | relative_url }}" width="600"/>
+       </td>
+       <td>
+        <img alt="rain1d_massconc1d.gif" class="jop-noMdConv" height="202" src="{{"assets/images/41b4ea017ad8402c9f000dd3fa6324e2.gif" | relative_url }}" width="177"/>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        11/02/2020 12:06
+        <br class="jop-noMdConv"/>
+        <br class="jop-noMdConv"/>
+        (Cluster 301)
+       </td>
+       <td>
+        <img alt="fitted_psd.png" class="jop-noMdConv" height="200" src="{{"assets/images/9af643f45a8e4532b2d0be543985dfce.png" | relative_url }}" width="355"/>
+       </td>
+       <td>
+        <img alt="fitted_thermodynamics.png" class="jop-noMdConv" height="200" src="{{"assets/images/c4ca4309a614404e926367e9ff6cb076.png" | relative_url }}" width="599"/>
+       </td>
+       <td>
+        <img alt="rain1d_massconc1d.gif" class="jop-noMdConv" height="201" src="{{"assets/images/cdc69b32fdd6457dbc44511341de011b.gif" | relative_url }}" width="176"/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <p>
+     It can be seen, that the cloud 18, shows less raining out.
+     <br/>
+     This is suprising on a first view, because for cloud cluster 18, there seem to be much more rain droplets measured. But for cloud cluster 301, the fitted distribution is much broader. Thus also much larger rain droplets of
+     <span class="joplin-editable">
+      <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+       10^{3}
+      </span>
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mn>
+            1
+           </mn>
+           <msup>
+            <mn>
+             0
+            </mn>
+            <mn>
+             3
+            </mn>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           10^{3}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     &micro;m may exist. As their mass scales with
+     <span class="joplin-editable">
+      <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+       r^3
+      </span>
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <msup>
+            <mi>
+             r
+            </mi>
+            <mn>
+             3
+            </mn>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           r^3
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     , the make a hugh part of the rain falling out of the cloud.
+    </p>
+    <p>
+     This changes after some minutes, when these big droplets reach the bottom of the domain.
+    </p>
+    <p>
+     It should be though of, how the fitting can be optimized to handle this.
+    </p>
+    <p>
+     Below one can also see some more details.
+    </p>
+    <ul>
+     <li>
+      <em>
+       1st col
+      </em>
+      : Evolution of the PSD over time (time on y axis, droplet radi x axis). The colorbar represents the amount of cloud and drizzle or rain droplets.
+     </li>
+     <li>
+      <em>
+       2nd col
+      </em>
+      : Thermodyncamic input to CLEO.
+      <br/>
+      <strong>
+       Note
+      </strong>
+      : It seens the pot. temperature seems to be not perfectly in line with the measurements.
+     </li>
+     <li>
+      <em>
+       3rd col
+      </em>
+      : A few example Superdroplets and their evoluation over time.
+     </li>
+    </ul>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Date
+       </th>
+       <th>
+        PSD
+       </th>
+       <th>
+        Thermodynamics
+       </th>
+       <th>
+        Model results
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        26/01/2020 13:00
+        <br class="jop-noMdConv">
+         <br class="jop-noMdConv">
+          (Cluster 18)
+         </br>
+        </br>
+       </td>
+       <td>
+        <img alt="PSD_radius_time.png" class="jop-noMdConv" height="211" src="{{"assets/images/d01bf8d195e54e79a4332de55b724672.png" | relative_url }}" width="352"/>
+       </td>
+       <td>
+        <img alt="thermo1dalltimeprofiles.png" class="jop-noMdConv" height="288" src="{{"assets/images/62d69e44dca540219cd4cb7f634302c4.png" | relative_url }}" width="587"/>
+       </td>
+       <td>
+        <img alt="rain1d_randomsample.png" class="jop-noMdConv" height="195" src="{{"assets/images/d170a0395938461ea8dba1b9bd772ab0.png" | relative_url }}" width="324"/>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        11/02/2020 12:06
+        <br class="jop-noMdConv"/>
+        <br class="jop-noMdConv"/>
+        (Cluster 301)
+       </td>
+       <td>
+        <img alt="PSD_radius_time.png" class="jop-noMdConv" height="212" src="{{"assets/images/241c861ec2cd4825a3655fd8c058029b.png" | relative_url }}" width="353"/>
+       </td>
+       <td>
+        <img alt="thermo1dalltimeprofiles.png" class="jop-noMdConv" height="290" src="{{"assets/images/205536b2cc2d49d799a896f44e085378.png" | relative_url }}" width="591"/>
+       </td>
+       <td>
+        <img alt="rain1d_randomsample.png" class="jop-noMdConv" height="196" src="{{"assets/images/adaf6bf889564617890af4bc0f67530c.png" | relative_url }}" width="326"/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <hr/>
+    <h1 id="draft-whats-next">
+     Draft: What's next?
+    </h1>
+    <h3 id="todo">
+     ToDo
+    </h3>
+    <ul>
+     <li>
+      Estimate the rain evaporation rate
+      <ul>
+       <li>
+        Can we use some direct model output for this?
+       </li>
+       <li>
+        We can also extract data of all super droplets.
+       </li>
+      </ul>
+     </li>
+     <li>
+      Read papers on how the distriubutions are fitted.
+     </li>
+     <li>
+      Use the same attempt as Mampi Sakar.
+     </li>
+    </ul>
+    <h3 id="current-statements">
+     Current statements
+    </h3>
+    <p>
+     The simulations work well and produce
+     <strong>
+      ?resonable?
+     </strong>
+     results.
+    </p>
+    <ul>
+     <li>
+      It seems to use the whole cloud data as a basis for a fit is not super accurate.
+      <ul>
+       <li>
+        Large drops rule the raining rate.
+       </li>
+       <li>
+        It is obvious, that the rain rate does depend on the general shape of the fit.
+       </li>
+      </ul>
+     </li>
+     <li>
+      The estiamtion of large droplets is very difficult.
+      <ul>
+       <li>
+        Only a few measurments.
+       </li>
+       <li>
+        How do we handle the distribution "edges".
+       </li>
+      </ul>
+     </li>
+     <li>
+      It should be discussed, if the individual cloud case is really good to analyse differences.
+      <ul>
+       <li>
+        Maybe as Mampi Sakar suggested, one should use a fit for each day and then make sure, that the total mass is the same in the model.
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <h3 id="to-analyse">
+     To analyse:
+    </h3>
+    <ul>
+     <li>
+      What is the difference in evaporation of small and large droplets?
+     </li>
+     <li>
+      How large is the total evaporation rate?
+      <ul>
+       <li>
+        Currently the estimation of the distribution is a fit from all timesteps in the cloud!
+       </li>
+       <li>
+        <mark>
+         <strong>
+          It needs to be scaled to get the total rain rate
+         </strong>
+        </mark>
+        <br/>
+        Assume the Mass at CLEO initilization is
+        <span class="joplin-editable">
+         <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+          m_{i}
+         </span>
+         <span class="katex">
+          <span class="katex-mathml">
+           <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <semantics>
+             <mrow>
+              <msub>
+               <mi>
+                m
+               </mi>
+               <mi>
+                i
+               </mi>
+              </msub>
+             </mrow>
+             <annotation encoding="application/x-tex">
+              m_{i}
+             </annotation>
+            </semantics>
+           </math>
+          </span>
+         </span>
+        </span>
+        . The total mass of the cloud droplets is
+        <span class="joplin-editable">
+         <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+          m_c
+         </span>
+         <span class="katex">
+          <span class="katex-mathml">
+           <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <semantics>
+             <mrow>
+              <msub>
+               <mi>
+                m
+               </mi>
+               <mi>
+                c
+               </mi>
+              </msub>
+             </mrow>
+             <annotation encoding="application/x-tex">
+              m_c
+             </annotation>
+            </semantics>
+           </math>
+          </span>
+         </span>
+        </span>
+        .
+        <br/>
+        Then the scale factor should be simply
+        <span class="joplin-editable">
+         <span class="joplin-source" data-joplin-language="katex" data-joplin-source-close="$" data-joplin-source-open="$">
+          \lambda = m_c / m_i
+         </span>
+         <span class="katex">
+          <span class="katex-mathml">
+           <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <semantics>
+             <mrow>
+              <mi>
+               &lambda;
+              </mi>
+              <mo>
+               =
+              </mo>
+              <msub>
+               <mi>
+                m
+               </mi>
+               <mi>
+                c
+               </mi>
+              </msub>
+              <mi mathvariant="normal">
+               /
+              </mi>
+              <msub>
+               <mi>
+                m
+               </mi>
+               <mi>
+                i
+               </mi>
+              </msub>
+             </mrow>
+             <annotation encoding="application/x-tex">
+              \lambda = m_c / m_i
+             </annotation>
+            </semantics>
+           </math>
+          </span>
+         </span>
+        </span>
+        <br/>
+        Or is this somehow
+        <em>
+         directly
+        </em>
+        related to the duration of the cloud?
+       </li>
+      </ul>
+     </li>
+     <li>
+      How large is the spread in the evaporation rate between different cloud?
+     </li>
+    </ul>
+    <h1 id="questions">
+     Questions
+    </h1>
+    <ul>
+     <li>
+      Can we extract the droplet evaporation as direct output of the model calculation?
+     </li>
+     <li>
+      How can I create a xarray Dataset from the zarr file?
+      <ul>
+       <li>
+        Is it correct that with a simple load by xarray, droplets are listed multiple times?
+       </li>
+      </ul>
+     </li>
+     <li>
+      It seems to use the whole cloud data as a basis for a fit is not super accurate.
+     </li>
+     <li>
+      The estiamtion of large droplets is very difficult.
+      <ul>
+       <li>
+        only a few measurments.
+       </li>
+       <li>
+        How do we handle the distribution edges.
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <h3 id="cleo">
+     CLEO
+    </h3>
+    <ul>
+     <li>
+      Can I compile CLEO once and run it with different input files?
+      <ul>
+       <li>
+        Because the compilation takes longer then the run itself :D
+       </li>
+      </ul>
+     </li>
+     <li>
+      How are the vertical boxes created exactly?
+      <ul>
+       <li>
+        I have to admit, that I struggel from time to time, to get the correct
+        <br/>
+        Total number of SD
+        <br/>
+        Number of gridboxes
+       </li>
+      </ul>
+     </li>
+     <li>
+      Can the output be written to any path or is there a limitation?
+      <ul>
+       <li>
+        This would help to run experiments
+       </li>
+      </ul>
+     </li>
+     <li>
+      As state above:
+      <ul>
+       <li>
+        How can I create a xr.Dataset from the zarr file.
+       </li>
+       <li>
+        What exactly is written in it.
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <div id="backs">
+    </div>
+    <style onload="                     console.log('sending message');                     webviewApi.postMessage('backlinks', {type:'getContent'}).then(function(response) {                         console.info('Got response in Markdown-it content script: ' + response);                         document.getElementById('backs').innerHTML=response;                     });                     return false;                 ">
+    </style>
+   </div>
+  </div>
+ </body>
+</html>

@@ -49,7 +49,7 @@ def findReplace(
             with open(filepath, "w") as f:
                 f.write(s)
 
-def findReplaceRelativePath(
+def findReplaceRelativePathImages(
         directory : Union[os.PathLike, str], 
         filePattern : str
         ) -> None:
@@ -98,7 +98,8 @@ def findReplaceRelativePath(
             res = "\n".join(lines)
             with open(filepath, "w") as f:
                 f.write(res)
-#%%
+
+
 # Create an ArgumentParser object
 # parser = argparse.ArgumentParser(description='Update Joplin export')
 
@@ -112,7 +113,7 @@ def findReplaceRelativePath(
 # # Define the directories
 # origin_dir = Path(args.origin)
 # destination_dir = Path(args.destination)
-#%%
+
 origin_dir = Path(r"C:\Users\Niebaum\Desktop\joplin_export")
 destination_dir = Path(r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
 
@@ -133,8 +134,7 @@ new_html_dir.mkdir(exist_ok=True, parents=False)
 # Copy the original directory to a new directory
 shutil.copytree(html_dir, new_html_dir, dirs_exist_ok=True)
 
-# %%
-print(f"\nRemoving the header string from the html files ...")
+print(f"\nRefactor html files ...")
 # And some other stuff
 for path, dirs, files in os.walk(os.path.abspath(new_html_dir)):
     for filename in fnmatch.filter(files, '*.html'):
@@ -150,16 +150,18 @@ for path, dirs, files in os.walk(os.path.abspath(new_html_dir)):
             div.decompose()
 
         # remove the head 
-        for head in soup.find_all("head"):
-            head.decompose()
+        # for head in soup.find_all("head"):
 
         prettyHTML = soup.prettify(formatter="html")   #prettify the html
         # remove the DOCTYPE HEADER
         # prettyHTML.replace("<!DOCTYPE html>", "")
         s = prettyHTML
+
+        # s.replace("<!DOCTYPE html>", "")
+        # s.replace("</meta>", "")
         with open(filepath, "w") as f:
             f.write(s)
-#%%
+
 
 # copy all files from the _resources folder to the assets folder    
 resource_dir = origin_dir / Path("_resources")
@@ -192,16 +194,34 @@ for path, dirs, files in os.walk(new_html_dir):
 print(f"\nModifying the links to the pluginAssets ...")
 findReplace(
     directory=new_html_dir,
-    find="pluginAssets/",
-    replace="/assets/pluginAssets/",
+    find="pluginAssets/katex/katex.css",
+    replace=r"{{/assets/pluginAssets/katex/katex.css | baseurl}}",
+    filePattern="*.html"
+)
+findReplace(
+    directory=new_html_dir,
+    find="pluginAssets/highlight.js/atom-one-light.css",
+    replace=r"{{/assets/pluginAssets/highlight.js/atom-one-light.css | baseurl}}",
+    filePattern="*.html"
+)
+findReplace(
+    directory=new_html_dir,
+    find="pluginAssets/mermaid/mermaid.min.js",
+    replace=r"{{/assets/pluginAssets/mermaid/mermaid.min.js | baseurl}}",
+    filePattern="*.html"
+)
+findReplace(
+    directory=new_html_dir,
+    find="pluginAssets/mermaid/mermaid_render.js",
+    replace=r"{{/assets/pluginAssets/mermaid/mermaid_render.js | baseurl}}",
     filePattern="*.html"
 )
 
-#%%
+
 # Modify the links to the _resources
 print(f"\nModifying the links to the _resources ...")
 
-findReplaceRelativePath(
+findReplaceRelativePathImages(
     directory=new_html_dir,
     filePattern="*.html"
 )
