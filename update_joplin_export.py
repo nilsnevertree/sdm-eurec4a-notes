@@ -100,21 +100,21 @@ def findReplaceRelativePath(
                 f.write(res)
 #%%
 # Create an ArgumentParser object
-parser = argparse.ArgumentParser(description='Update Joplin export')
+# parser = argparse.ArgumentParser(description='Update Joplin export')
 
-# # Add arguments
-parser.add_argument('--origin', type=str, help='Origin directory', default=r"C:\Users\Niebaum\Desktop\joplin_export")
-parser.add_argument('--destination', type=str, help='Destination directory', default=r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
+# # # Add arguments
+# parser.add_argument('--origin', type=str, help='Origin directory', default=r"C:\Users\Niebaum\Desktop\joplin_export")
+# parser.add_argument('--destination', type=str, help='Destination directory', default=r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
 
-# Parse the arguments
-args = parser.parse_args()
+# # Parse the arguments
+# args = parser.parse_args()
 
-# Define the directories
-origin_dir = Path(args.origin)
-destination_dir = Path(args.destination)
-# #%%
-# origin_dir = Path(r"C:\Users\Niebaum\Desktop\joplin_export")
-# destination_dir = Path(r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
+# # Define the directories
+# origin_dir = Path(args.origin)
+# destination_dir = Path(args.destination)
+#%%
+origin_dir = Path(r"C:\Users\Niebaum\Desktop\joplin_export")
+destination_dir = Path(r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
 
 # if input(f"\n- Origin: {origin_dir}"
 #       f"\n- Destination: {destination_dir}"
@@ -133,6 +133,33 @@ new_html_dir.mkdir(exist_ok=True, parents=False)
 # Copy the original directory to a new directory
 shutil.copytree(html_dir, new_html_dir, dirs_exist_ok=True)
 
+# %%
+print(f"\nRemoving the header string from the html files ...")
+# And some other stuff
+for path, dirs, files in os.walk(os.path.abspath(new_html_dir)):
+    for filename in fnmatch.filter(files, '*.html'):
+        filepath = os.path.join(path, filename)
+        with open(filepath, "r") as f:
+            s = f.read()
+
+        # get a soup object
+        soup = bs(s, features="html.parser")                #make BeautifulSoup
+
+        # remove the katex-html span
+        for div in soup.find_all("span", {'class':'katex-html'}): 
+            div.decompose()
+
+        # remove the head 
+        for head in soup.find_all("head"):
+            head.decompose()
+
+        prettyHTML = soup.prettify(formatter="html")   #prettify the html
+        # remove the DOCTYPE HEADER
+        # prettyHTML.replace("<!DOCTYPE html>", "")
+        s = prettyHTML
+        with open(filepath, "w") as f:
+            f.write(s)
+#%%
 
 # copy all files from the _resources folder to the assets folder    
 resource_dir = origin_dir / Path("_resources")
@@ -171,44 +198,6 @@ findReplace(
 )
 
 #%%
-# Remove the header string from the html files
-
-# %%
-
-for path, dirs, files in os.walk(new_html_dir):
-    for filename in files:
-        if filename.endswith(".html"):
-            filepath = os.path.join(path, filename)
-            with open(filepath, "r") as f:
-                lines = f.readlines()
-            with open(filepath, "w") as f:
-                f.writelines(lines[12:-4])
-
-
-# print(f"\nRemoving the header string from the html files ...")
-# header_str = "<!DOCTYPE html>"
-# findReplace(
-#     directory=new_html_dir,
-#     find=header_str,
-#     replace="",
-#     filePattern="*.html"
-# )
-#%%
-# # Prettyfy html
-# # !!!!!!!! THIS NEEDS TO BE DONE FIRST !!!!!!!!!
-# from bs4 import BeautifulSoup as bs
-# for path, dirs, files in os.walk(os.path.abspath(new_html_dir)):
-#     for filename in fnmatch.filter(files, '*.html'):
-#         filepath = os.path.join(path, filename)
-#         with open(filepath) as f:
-#             s = f.read()
-#         soup = bs(s, features="html.parser")                #make BeautifulSoup
-#         prettyHTML = soup.prettify(formatter="html")   #prettify the html
-#         with open(filepath, "w") as f:
-#             f.write(prettyHTML)
-
-
-#%%
 # Modify the links to the _resources
 print(f"\nModifying the links to the _resources ...")
 
@@ -216,3 +205,4 @@ findReplaceRelativePath(
     directory=new_html_dir,
     filePattern="*.html"
 )
+# %%
