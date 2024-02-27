@@ -149,6 +149,18 @@ for path, dirs, files in os.walk(os.path.abspath(new_html_dir)):
         for div in soup.find_all("span", {'class':'katex-html'}): 
             div.decompose()
 
+        # remove the style tag to have the random style still active
+        for style in soup.find_all("style"):
+            style.decompose()
+
+        # remove all the joplin-source tags for spand and pre
+        for jpsrc in soup.find_all("span", {'class': 'joplin-source'}) :
+            jpsrc.decompose()
+        for jpsrc in soup.find_all("pre", {'class': 'joplin-source'}) :
+            jpsrc.decompose()
+
+        for cl in soup.find_all("joplin-source"):
+            cl.decompose()
         # remove the head 
         # for head in soup.find_all("head"):
 
@@ -157,8 +169,9 @@ for path, dirs, files in os.walk(os.path.abspath(new_html_dir)):
         # prettyHTML.replace("<!DOCTYPE html>", "")
         s = prettyHTML
 
-        # s.replace("<!DOCTYPE html>", "")
-        # s.replace("</meta>", "")
+        # remove the meta tag and the DOCType
+        s = s.replace("<!DOCTYPE html>", "")
+        s = s.replace("</meta>", "")
         with open(filepath, "w") as f:
             f.write(s)
 
@@ -195,25 +208,25 @@ print(f"\nModifying the links to the pluginAssets ...")
 findReplace(
     directory=new_html_dir,
     find="pluginAssets/katex/katex.css",
-    replace=r"{{/assets/pluginAssets/katex/katex.css | baseurl}}",
+    replace=r"{{/assets/pluginAssets/katex/katex.css | prepend: baseurl}}",
     filePattern="*.html"
 )
 findReplace(
     directory=new_html_dir,
     find="pluginAssets/highlight.js/atom-one-light.css",
-    replace=r"{{/assets/pluginAssets/highlight.js/atom-one-light.css | baseurl}}",
+    replace=r"{{/assets/pluginAssets/highlight.js/atom-one-light.css | prepend: baseurl}}",
     filePattern="*.html"
 )
 findReplace(
     directory=new_html_dir,
     find="pluginAssets/mermaid/mermaid.min.js",
-    replace=r"{{/assets/pluginAssets/mermaid/mermaid.min.js | baseurl}}",
+    replace=r"{{/assets/pluginAssets/mermaid/mermaid.min.js | prepend: baseurl}}",
     filePattern="*.html"
 )
 findReplace(
     directory=new_html_dir,
     find="pluginAssets/mermaid/mermaid_render.js",
-    replace=r"{{/assets/pluginAssets/mermaid/mermaid_render.js | baseurl}}",
+    replace=r"{{/assets/pluginAssets/mermaid/mermaid_render.js | prepend: baseurl}}",
     filePattern="*.html"
 )
 
