@@ -21,8 +21,941 @@
    </div>
    <div id="rendered-md">
     <p>
-     After the Chat with Clara, things became more clear compared to
+     This week, multiple runs of CLEO were preformed and the individual Super Droplets (SDs) were analysed.
     </p>
+    <hr/>
+    <h2 id="initialization">
+     Initialization
+    </h2>
+    <p>
+     As an example, let us consider again the cloud cluster
+     <code class="inline-code">
+      18
+     </code>
+     from the 2022-02-11.
+    </p>
+    <p>
+     The particle size and mass size distributions can be see in the figure below.
+    </p>
+    <ul>
+     <li>
+      In red, one can see the observations of the ATR.
+     </li>
+     <li>
+      The smaller blue dots, show the fitted log-Normal distributions for the same size bins as given by the original ATR measurements.
+     </li>
+     <li>
+      The orange dots show multiplicity of the SDs.
+     </li>
+     <li>
+      <mark>
+       Why the init. distribution of CLEO lower?
+      </mark>
+      :
+      <ul>
+       <li>
+        The scale factor / total number concentration (
+        <span class="joplin-editable">
+         <span class="katex">
+          <span class="katex-mathml">
+           <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <semantics>
+             <mrow>
+              <mi>
+               N
+              </mi>
+             </mrow>
+             <annotation encoding="application/x-tex">
+              N
+             </annotation>
+            </semantics>
+           </math>
+          </span>
+         </span>
+        </span>
+        ) of the distribution is the same as for the observations.
+       </li>
+       <li>
+        The radii range is larger in CLEO than in the observations.
+       </li>
+       <li>
+        Therefore, the individual concentration for size bins is lower.
+       </li>
+       <li>
+        This can be fixed, by adjusting the scale-factor to a proper value.
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <img alt="PSD_MSD_cloud.png" class="jop-noMdConv" height="250" src="{{"assets/images/33870ea25fe748b89904ba9744ce77a4.png" | relative_url }}" width="500"/>
+    <h3 id="how-to-make-sure-to-keep-the-lwc-realistic">
+     How to make sure to keep the LWC realistic.
+    </h3>
+    <p>
+     Below, the same colors as above can be seen.
+     <br/>
+     The Fit and the CLEO input distributions seem to have too high LWC in comparison to the observations.
+     <br/>
+     Also consider, that the input for CLEO has to low PSD and MSD, thus if this issue is fixed, the total LWC is even higher.
+    </p>
+    <img alt="total_number_concentration_and_LWC.png" class="jop-noMdConv" height="250" src="{{"assets/images/9b45b50a43fc4f5aa435a247c134f557.png" | relative_url }}" width="500"/>
+    <hr/>
+    <h4 id="create-netcdf-files-from-raw-output">
+     Create netCDF files from raw output:
+    </h4>
+    <p>
+     For this Clara provided a great function, to extract extract the attributions of each SD. The arrays are sparse arrays, which are better handled using
+     <a data-from-md="" href="https://awkward-array.org/doc/main/" title="https://awkward-array.org/doc/main/">
+      awkward
+     </a>
+     .
+     <br/>
+     But as we have only a limited amount of SDs, we can use simply
+     <code class="inline-code">
+      xarray.DataArray
+     </code>
+     to do so and use
+     <code class="inline-code">
+      np.nan
+     </code>
+     for missing values (e.g. when SDs leave the domain).
+    </p>
+    <p>
+     To convert the raw output of CLEO from
+     <code class="inline-code">
+      zarr
+     </code>
+     netCDF files to simple (?) netCDF files, one can use the script provided (
+     <mark>
+      add link here
+     </mark>
+     ).
+    </p>
+    <hr/>
+    <hr/>
+    <h2 id="results">
+     Results
+    </h2>
+    <p>
+     Again, the results for a individual cloud cluster are shown below.
+    </p>
+    <p>
+     The individual SDs will be followed in a Lagrangian view.
+    </p>
+    <p>
+     The following questions will be tackled:
+    </p>
+    <ol>
+     <li>
+      How does the radii of SDs change during the rain out process?
+     </li>
+     <li>
+      Can Rain evaporation be observed and how can we calculate it?
+     </li>
+     <li>
+      How does it depend on droplet radii?
+     </li>
+     <li>
+      Extending the runtime of the simulation
+     </li>
+     <li>
+      Inter comparison of multiple clouds.
+     </li>
+    </ol>
+    <h3 id="1-how-does-the-radii-of-sds-change-during-the-rain-out-process">
+     1. How does the radii of SDs change during the rain out process?
+    </h3>
+    <p>
+     To understand how the SDs evolve on their down path, 20 (?) randomly sampled SD from the initial distribution are visualized.
+    </p>
+    <ul>
+     <li>
+      Left: Altitude
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mo stretchy="false">
+             [
+            </mo>
+            <mi>
+             m
+            </mi>
+            <mo stretchy="false">
+             ]
+            </mo>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            [m]
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      against time
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mo stretchy="false">
+             [
+            </mo>
+            <mi>
+             s
+            </mi>
+            <mo stretchy="false">
+             ]
+            </mo>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            [s]
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      .
+     </li>
+     <li>
+      Right: Altitude
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mo stretchy="false">
+             [
+            </mo>
+            <mi>
+             m
+            </mi>
+            <mo stretchy="false">
+             ]
+            </mo>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            [m]
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      against Radius
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mo stretchy="false">
+             [
+            </mo>
+            <mi>
+             m
+            </mi>
+            <mo stretchy="false">
+             ]
+            </mo>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            [m]
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      .
+      <em>
+       Each line represents the evolution of a individual SD.
+      </em>
+     </li>
+    </ul>
+    <p>
+     The cloud base, derived from the Thermodynamic profiles is shown as black dashed line.
+     <br/>
+     <em>
+      But SD are only spawn between 800 and 1200 m!
+     </em>
+     <strong>
+      <mark>
+       &acirc;&dagger;&rsquo; This needs to be modified
+      </mark>
+     </strong>
+    </p>
+    <img alt="Droplet_evolution_small_whole_dataset.jpg" class="jop-noMdConv" height="287" src="{{"assets/images/045d989a2bf44951950fb68504e8f788.jpg" | relative_url }}" width="502"/>
+    <ul>
+     <li>
+      It can be seen, that SDs need a certain radii to actually fall out of the cloud.
+     </li>
+     <li>
+      As expected 3 kind of SD can be found:
+      <ol>
+       <li>
+        Small size SD which do not fall out of the cloud.
+       </li>
+       <li>
+        Medium size SD, which fall slowly.
+       </li>
+       <li>
+        Large SD (Rain drops), which rain out very fast.
+       </li>
+      </ol>
+     </li>
+    </ul>
+    <p>
+     The radii of all droplets in the cloud increases over time, due to condensation and collision-coalescence.
+     <mark>
+      But what influence do the individual processes have? &acirc;&dagger;&rsquo; Analyse this!
+     </mark>
+     <br/>
+     For large SD, this is not so dominant, as they rain out fast.
+    </p>
+    <h3 id="2-can-rain-evaporation-be-observed-and-how-can-we-calculate-it">
+     2. Can Rain evaporation be observed and how can we calculate it?
+    </h3>
+    <p>
+     To understand the rain evaporation, it is crucial to identify, if droplets ever reduce their radius on the way towards the bottom of the domain.
+    </p>
+    <p>
+     We can say that the radius and altitude of a SD depends on time.
+    </p>
+    <p>
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            r
+           </mi>
+           <mo>
+            =
+           </mo>
+           <mi>
+            r
+           </mi>
+           <mo stretchy="false">
+            (
+           </mo>
+           <mi>
+            t
+           </mi>
+           <mo stretchy="false">
+            )
+           </mo>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           r = r(t)
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     <br/>
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            h
+           </mi>
+           <mo>
+            =
+           </mo>
+           <mi>
+            h
+           </mi>
+           <mo stretchy="false">
+            (
+           </mo>
+           <mi>
+            t
+           </mi>
+           <mo stretchy="false">
+            )
+           </mo>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           h = h(t)
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+    </p>
+    <p>
+     There are multiple timesteps, which are of interest in the following:
+    </p>
+    <ul>
+     <li>
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <msub>
+             <mi>
+              t
+             </mi>
+             <mrow>
+              <mi>
+               c
+              </mi>
+              <mi>
+               b
+              </mi>
+             </mrow>
+            </msub>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            t_{cb}
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      the time at which the SD
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mi>
+             n
+            </mi>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            n
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      passes the cloud base.
+     </li>
+     <li>
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <msub>
+             <mi>
+              t
+             </mi>
+             <msub>
+              <mi>
+               r
+              </mi>
+              <mrow>
+               <mi>
+                m
+               </mi>
+               <mi>
+                a
+               </mi>
+               <mi>
+                x
+               </mi>
+              </mrow>
+             </msub>
+            </msub>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            t_{r_{max}}
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      the time at which the SD
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mi>
+             n
+            </mi>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            n
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      achieves its largest radius.
+     </li>
+     <li>
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <msub>
+             <mi>
+              t
+             </mi>
+             <mrow>
+              <mi>
+               b
+              </mi>
+              <mi>
+               o
+              </mi>
+              <mi>
+               t
+              </mi>
+              <mi>
+               t
+              </mi>
+              <mi>
+               o
+              </mi>
+              <mi>
+               m
+              </mi>
+             </mrow>
+            </msub>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            t_{bottom}
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      the time at which the SD leaves the domain at the bottom.
+     </li>
+    </ul>
+    <p>
+     We select the sub-dataset of SDs, which ever show a reduction of their radius, below the initialization levels (800-1200m). Assuming a pure fall without any lifting,
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <msub>
+            <mi>
+             t
+            </mi>
+            <mrow>
+             <mi>
+              c
+             </mi>
+             <mi>
+              b
+             </mi>
+            </mrow>
+           </msub>
+           <mo>
+            &acirc;&permil;&curren;
+           </mo>
+           <msub>
+            <mi>
+             t
+            </mi>
+            <msub>
+             <mi>
+              r
+             </mi>
+             <mrow>
+              <mi>
+               m
+              </mi>
+              <mi>
+               a
+              </mi>
+              <mi>
+               x
+              </mi>
+             </mrow>
+            </msub>
+           </msub>
+           <mo>
+            &acirc;&permil;&curren;
+           </mo>
+           <msub>
+            <mi>
+             t
+            </mi>
+            <mrow>
+             <mi>
+              b
+             </mi>
+             <mi>
+              o
+             </mi>
+             <mi>
+              t
+             </mi>
+             <mi>
+              t
+             </mi>
+             <mi>
+              o
+             </mi>
+             <mi>
+              m
+             </mi>
+            </mrow>
+           </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           t_{cb} \leq t_{r_{max}} \leq t_{bottom}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     needs to be fulfilled.
+    </p>
+    <p>
+     Using this condition, we can also sample 20 random SD from this sub-dataset and create the same figure, which can be seen below.
+     <br/>
+     For this figure, the radius axis was also zoomed in.
+    </p>
+    <img alt="Droplet_evolution_zoom_small.jpg" class="jop-noMdConv" height="512" src="{{"assets/images/7b6aacf56ac34b768ddb3dca89698776.jpg" | relative_url }}" width="500"/>
+    <ul>
+     <li>
+      Top right: Only a minority of SDs shows a decrease in radius.
+     </li>
+     <li>
+      Bottom right: SD with larger radii show a less enhanced
+      <em>
+       curve
+      </em>
+      shape.
+     </li>
+     <li>
+      <mark>
+       All droplets keep increasing their radii below cloud base, even though super saturation should be lower than 0.&acirc;&dagger;&rsquo; Why is this the case??
+      </mark>
+     </li>
+     <li>
+      The SDs with rain evaporation have similar fall speeds, so also similar radii.
+     </li>
+    </ul>
+    <h3 id="3-how-does-it-depend-on-droplet-radii">
+     3. How does it depend on droplet radii?
+    </h3>
+    <p>
+     The following figure is the same as the first on this page.
+     <br/>
+     It again shows the different PSD and MSD.
+     <br/>
+     This time, it includes green
+     <code class="inline-code">
+      x
+     </code>
+     markers to mark all SDs which show a decrease of their radius on the way down. It can be seen that only Droplets of specific radius show this behaviour.
+     <br/>
+     <img alt="PSD_MSD_cloud_evaporation.png" class="jop-noMdConv" height="250" src="{{"assets/images/bc1006f6c2004330bbb7b1e473c43e16.png" | relative_url }}" width="500"/>
+    </p>
+    <p>
+     The very small droplets are only marked, because their droplet radi increased rapidly due to collision coalescence (most likely the explanation). Then they behave in the same manner as the medium size SDs, which show rain evporation.
+    </p>
+    <h4 id="looking-at-the-individual-mass-loss-and-the-represented-mass-loss-of-each-sd">
+     Looking at the individual mass loss
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            d
+           </mi>
+           <msub>
+            <mi>
+             M
+            </mi>
+            <mrow>
+             <mi>
+              S
+             </mi>
+             <mi>
+              D
+             </mi>
+            </mrow>
+           </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           dM_{SD}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     and the represented mass loss
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            d
+           </mi>
+           <mi>
+            M
+           </mi>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           dM
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     of each SD.
+    </h4>
+    <img alt="mass_loss_rain_evaporation_zoom.png" class="jop-noMdConv" height="250" src="{{"assets/images/404ed110d59c47e5bffa13b224544846.png" | relative_url }}" width="500"/>
+    <p>
+     Binning by radius in a logarithmic scale can give us the mean of
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            d
+           </mi>
+           <msub>
+            <mi>
+             M
+            </mi>
+            <mrow>
+             <mi>
+              S
+             </mi>
+             <mi>
+              D
+             </mi>
+            </mrow>
+           </msub>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           dM_{SD}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     and sum of
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            d
+           </mi>
+           <mi>
+            M
+           </mi>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           dM
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     over all SD in one bin.
+    </p>
+    <img alt="mass_loss_rain_evaporation_hist.png" class="jop-noMdConv" height="250" src="{{"assets/images/6b669b0c661f407683a85b993c483bca.png" | relative_url }}" width="500"/>
+    <p>
+     <em>
+      <strong>
+       We can see a dependency of the mass loss (ML) and represented mass loss (MLR) from the radius
+      </strong>
+     </em>
+    </p>
+    <p>
+     <mark>
+      Note: The sum
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <mi>
+             M
+            </mi>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            M
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+      represents only the evaporate mass of a single ATR measurement!
+     </mark>
+     <br/>
+     This means, that the value should be multiplied by the duration of the cloud.
+    </p>
+    <h3 id="4-extending-the-runtime-of-the-simulation">
+     4. Extending the runtime of the simulation
+    </h3>
+    <p>
+     If we run the simulation longer (2600 s instead of 720 s).
+     <br/>
+     The smaller droplets get more prominent.
+    </p>
+    <img alt="mass_loss_rain_evaporation_zoom.png" class="jop-noMdConv" height="250" src="{{"assets/images/f4da6261774746b7a2a1c1c626197a98.png" | relative_url }}" width="500"/>
+    <img alt="mass_loss_rain_evaporation_hist.png" class="jop-noMdConv" height="250" src="{{"assets/images/74883e1c530148068f3d6d6cb682d75b.png" | relative_url }}" width="500"/>
+    <p>
+     <mark>
+      A clear structure of the mass loss depending on the droplet radius can be see!
+     </mark>
+     <br/>
+     <strong>
+      BUT, it is yet unclear, how the Thermodynamics play a role here
+     </strong>
+     .
+    </p>
+    <h3 id="5-inter-comparison-of-multiple-clouds">
+     5. Inter comparison of multiple clouds.
+    </h3>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Details
+       </th>
+       <th>
+        18
+       </th>
+       <th>
+        295
+       </th>
+       <th>
+        301
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        Init. distribution
+       </td>
+       <td>
+        <img alt="PSD_MSD_cloud_evaporation.png" class="jop-noMdConv" height="165" src="{{"assets/images/992725473ed74fd59469a15a82452935.png" | relative_url }}" width="330"/>
+       </td>
+       <td>
+        <img alt="PSD_MSD_cloud_evaporation.png" class="jop-noMdConv" height="165" src="{{"assets/images/1690b2bec9734af5883af9d5de82e4e8.png" | relative_url }}" width="330"/>
+       </td>
+       <td>
+        <img alt="PSD_MSD_cloud_evaporation.png" class="jop-noMdConv" height="165" src="{{"assets/images/5db9461efa5b4495992063d229d13746.png" | relative_url }}" width="330"/>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Mass loss
+       </td>
+       <td>
+        <img alt="mass_loss_rain_evaporation_zoom.png" class="jop-noMdConv" height="165" src="{{"assets/images/9496efaa534e4f0ba65b7f80d1b32a91.png" | relative_url }}" width="330"/>
+       </td>
+       <td>
+        <img alt="mass_loss_rain_evaporation_zoom.png" class="jop-noMdConv" height="165" src="{{"assets/images/bf138cba86a04c0b9d6caf04de86ddbb.png" | relative_url }}" width="330"/>
+       </td>
+       <td>
+        <img alt="mass_loss_rain_evaporation_zoom.png" class="jop-noMdConv" height="165" src="{{"assets/images/56291fc44b2345afa4e6e62eea250c60.png" | relative_url }}" width="330"/>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Mass loss histogram
+       </td>
+       <td>
+        <img alt="mass_loss_rain_evaporation_hist.png" class="jop-noMdConv" height="165" src="{{"assets/images/3494d525793e4262bc1022563444711e.png" | relative_url }}" width="330"/>
+       </td>
+       <td>
+        <img alt="mass_loss_rain_evaporation_hist.png" class="jop-noMdConv" height="165" src="{{"assets/images/815b2a98c2d242fe9265eeb4fd0e5ce3.png" | relative_url }}" width="330"/>
+       </td>
+       <td>
+        <img alt="mass_loss_rain_evaporation_hist.png" class="jop-noMdConv" height="165" src="{{"assets/images/e08747b858c34c3798285831ebcdde04.png" | relative_url }}" width="330"/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <hr/>
+    <h1 id="whats-next">
+     What's next?
+    </h1>
+    <h3 id="todo">
+     ToDo
+    </h3>
+    <ul>
+     <li>
+      <mark>
+       understand if the numbers which we get are correct!
+      </mark>
+     </li>
+     <li>
+      Why do the cloud droplets grow below cloud base?
+     </li>
+     <li>
+      automate the simulation execution and netCDF file creation.
+     </li>
+     <li>
+      understand inter cloud influence.
+      <ul>
+       <li>
+        especially the thermodynamics.
+       </li>
+      </ul>
+     </li>
+     <li>
+      Run simulations for longer
+     </li>
+     <li>
+      Adjust cloud base to ly inside the measurement
+     </li>
+     <li>
+      Reduce cloud thickness.
+     </li>
+     <li>
+      Make sure LWC is the same in observations and CLEO.
+     </li>
+    </ul>
     <div id="backs">
     </div>
    </div>
