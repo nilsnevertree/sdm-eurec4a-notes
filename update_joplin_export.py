@@ -114,7 +114,7 @@ def findReplaceRelativePathImages(
 # origin_dir = Path(args.origin)
 # destination_dir = Path(args.destination)
 
-origin_dir = Path(r"C:\Users\Niebaum\Desktop\joplin_export")
+origin_dir = Path(r"C:\Users\Niebaum\Documents\Uni\Master\MasterThesis\joplin_notes")
 destination_dir = Path(r"C:\Users\Niebaum\Documents\Repositories\sdm-eurec4a-notes")
 
 # if input(f"\n- Origin: {origin_dir}"
