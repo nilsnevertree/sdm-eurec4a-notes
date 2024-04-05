@@ -1,0 +1,444 @@
+
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link href="{{/assets/pluginAssets/katex/katex.css | prepend: baseurl}}" rel="stylesheet"/>
+   <script src="{{/assets/pluginAssets/mermaid/mermaid.min.js | prepend: baseurl}}" type="application/javascript">
+   </script>
+   <script src="{{/assets/pluginAssets/mermaid/mermaid_render.js | prepend: baseurl}}" type="application/javascript">
+   </script>
+   <link href="{{/assets/pluginAssets/highlight.js/atom-one-light.css | prepend: baseurl}}" rel="stylesheet"/>
+   <title>
+    Summary
+   </title>
+  
+ </head>
+ <body>
+  <div class="exported-note">
+   <div class="exported-note-title">
+    Summary
+   </div>
+   <div id="rendered-md">
+    <p>
+     The idea was to run the experiment for all cloud clusters.
+     <br/>
+     This was done.
+    </p>
+    <p>
+     The conversion from
+     <code class="inline-code">
+      awkward
+     </code>
+     zarr arrays to xarray netcdfs was performed but seems to be very slow. A work around is done, but takes some time.
+    </p>
+    <h3 id="eulerian-view-on-psd-and-msd">
+     Eulerian view on PSD and MSD
+    </h3>
+    <p>
+     To change from a Lagrangian point of view
+    </p>
+    <div class="joplin-editable">
+     <pre class="hljs"><code><span class="hljs-attr">dimensions</span> = (<span class="hljs-string">"time"</span>, <span class="hljs-string">"sd_id"</span>)</code></pre>
+    </div>
+    <p>
+     to a more or less Eulerian point of view, enables to plot e.g. PSD and MSD at specific time steps and heights.
+     <br/>
+     For the PSD and MSD can be retireved from the multiplicity
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            &Icirc;&frac34;
+           </mi>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           \xi
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     , radius
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            r
+           </mi>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           r
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     and spehrical mass
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            m
+           </mi>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           m
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     of the
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mi>
+            N
+           </mi>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           N
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     SDs
+     <br/>
+     For a given timestep
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mover accent="true">
+            <mi>
+             t
+            </mi>
+            <mo>
+             ~
+            </mo>
+           </mover>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           \tilde{t}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     we can bin by radius and altitude bins giving new dimensions:
+    </p>
+    <div class="joplin-editable">
+     <pre class="hljs"><code><span class="hljs-attr">dimensions</span> = (<span class="hljs-string">"time"</span>, <span class="hljs-string">"radius_bins"</span>, <span class="hljs-string">"altitude_bins"</span>)</code></pre>
+    </div>
+    <ul>
+     <li>
+      PSD :
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <msubsup>
+             <mo>
+              &acirc;&circ;&lsquo;
+             </mo>
+             <mrow>
+              <mi>
+               i
+              </mi>
+              <mi>
+               d
+              </mi>
+              <mo>
+               =
+              </mo>
+              <mn>
+               0
+              </mn>
+             </mrow>
+             <mi>
+              N
+             </mi>
+            </msubsup>
+            <msubsup>
+             <mi>
+              &Icirc;&frac34;
+             </mi>
+             <mrow>
+              <mi>
+               i
+              </mi>
+              <mi>
+               d
+              </mi>
+             </mrow>
+             <mrow>
+              <mi>
+               b
+              </mi>
+              <mi>
+               i
+              </mi>
+              <mi>
+               n
+              </mi>
+              <mi>
+               n
+              </mi>
+              <mi>
+               e
+              </mi>
+              <mi>
+               d
+              </mi>
+             </mrow>
+            </msubsup>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            \sum_{id = 0}^{N} \xi_{id}^{binned}
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+     </li>
+     <li>
+      MSD :
+      <span class="joplin-editable">
+       <span class="katex">
+        <span class="katex-mathml">
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <semantics>
+           <mrow>
+            <msubsup>
+             <mo>
+              &acirc;&circ;&lsquo;
+             </mo>
+             <mrow>
+              <mi>
+               i
+              </mi>
+              <mi>
+               d
+              </mi>
+              <mo>
+               =
+              </mo>
+              <mn>
+               0
+              </mn>
+             </mrow>
+             <mi>
+              N
+             </mi>
+            </msubsup>
+            <msubsup>
+             <mi>
+              &Icirc;&frac34;
+             </mi>
+             <mrow>
+              <mi>
+               i
+              </mi>
+              <mi>
+               d
+              </mi>
+             </mrow>
+             <mrow>
+              <mi>
+               b
+              </mi>
+              <mi>
+               i
+              </mi>
+              <mi>
+               n
+              </mi>
+              <mi>
+               n
+              </mi>
+              <mi>
+               e
+              </mi>
+              <mi>
+               d
+              </mi>
+             </mrow>
+            </msubsup>
+            <mo>
+             &acirc;&lsaquo;&hellip;
+            </mo>
+            <msubsup>
+             <mi>
+              m
+             </mi>
+             <mrow>
+              <mi>
+               i
+              </mi>
+              <mi>
+               d
+              </mi>
+             </mrow>
+             <mrow>
+              <mi>
+               b
+              </mi>
+              <mi>
+               i
+              </mi>
+              <mi>
+               n
+              </mi>
+              <mi>
+               n
+              </mi>
+              <mi>
+               e
+              </mi>
+              <mi>
+               d
+              </mi>
+             </mrow>
+            </msubsup>
+           </mrow>
+           <annotation encoding="application/x-tex">
+            \sum_{id = 0}^{N} \xi_{id}^{binned} \cdot m_{id}^{binned}
+           </annotation>
+          </semantics>
+         </math>
+        </span>
+       </span>
+      </span>
+     </li>
+    </ul>
+    <h3 id="some-psd-and-msd-for-cloud-cluster-18-can-be-seen-below">
+     Some PSD and MSD for cloud cluster 18 can be seen below.
+    </h3>
+    <p>
+     The cloud cluster 18 was chosen, because it has reasonable amounts of rain.
+    </p>
+    <p>
+     Below you can see a eulerian point fo view on the results of the results produced by CLEO.
+    </p>
+    <ul>
+     <li>
+      along the x-axis the radius bins are shown (log-scale)
+     </li>
+     <li>
+      along the y-axis the altitude bins are shown (20 m spacing)
+     </li>
+     <li>
+      Red shows high values and white low/no values.
+     </li>
+     <li>
+      Left is the PSD and right is MSD.
+     </li>
+    </ul>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Cluster 18 (Please note the different xscales!
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <img alt="animation.gif" src="{{"assets/images/2e4d276df8574339a3c097d03e952a72.gif" | relative_url }}"/>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <img alt="mass_loss_rain_evaporation_hist.png" src="{{"assets/images/815cd93440ad4babb315c3bf0ad19602.png" | relative_url }}"/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <p>
+     The large rain droplets fall down earliest followed by smaller and smaller droplets.
+     <br/>
+     Thus the cloud
+     <em>
+      rains-out
+     </em>
+     but not in a really realistic way.
+    </p>
+    <h4 id="solving-this-issue">
+     Solving this issue
+    </h4>
+    <p>
+     The idea would be to thin the cloud and keep the distribution constant over time.
+     <br/>
+     It is not yet clear how exactly to do this without limiting the droplets to evolve to a state where they fall down.
+    </p>
+    <p>
+     Another good option would be display the histogram for differnt time steps.
+    </p>
+    <h2 id="whats-next">
+     Whats next:
+    </h2>
+    <ul>
+     <li>
+      Create Draft outline of Thesis to have a guidance of what to work on. See for this
+      <a data-from-md="" data-resource-id="178f2ceba128418d92771c045f530884" href="joplin://178f2ceba128418d92771c045f530884">
+       Outline
+      </a>
+     </li>
+     <li>
+      The next steps would be to understand the intercloud differences and display the histogram for all individual cloud cluster and see the spread.
+     </li>
+     <li>
+      It seems already that there are specific radii which lead to rain evaporation.
+     </li>
+     <li>
+      The next step cloud be to undersand the influence of model parameters!
+      <ul>
+       <li>
+        For this we could pick lets say three representative different cloud types.
+       </li>
+       <li>
+        Modify if collision coalesence occures.
+       </li>
+       <li>
+        Modify the thermodynamic properties.
+       </li>
+       <li>
+        Vertical resolution and # of SDs
+       </li>
+       <li>
+        What else can we look at.
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <div id="backs">
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
