@@ -1,0 +1,451 @@
+
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link href="{{/assets/pluginAssets/katex/katex.css | prepend: baseurl}}" rel="stylesheet"/>
+   <script src="{{/assets/pluginAssets/mermaid/mermaid.min.js | prepend: baseurl}}" type="application/javascript">
+   </script>
+   <script src="{{/assets/pluginAssets/mermaid/mermaid_render.js | prepend: baseurl}}" type="application/javascript">
+   </script>
+   <link href="{{/assets/pluginAssets/highlight.js/atom-one-light.css | prepend: baseurl}}" rel="stylesheet"/>
+   <title>
+    Until-Now
+   </title>
+  
+ </head>
+ <body>
+  <div class="exported-note">
+   <div class="exported-note-title">
+    Until-Now
+   </div>
+   <div id="rendered-md">
+    <h1 id="what-happend-until-now">
+     What happend until now?
+    </h1>
+    <h2 id="goal">
+     Goal:
+    </h2>
+    <p>
+     <mark>
+      Constrain rain evaporation during the EUREC4A campaign.
+     </mark>
+    </p>
+    <h2 id="introduction">
+     Introduction:
+    </h2>
+    <p>
+     Droplets which fall down can evaporate.
+     <br/>
+     There can be top and bottom intense evaporation.
+    </p>
+    <p>
+     <strong>
+      Idea:
+     </strong>
+     Use a lagrangian model which includes micro-physics to understand the phenomena. The super droplet model
+     <a data-from-md="" href="https://github.com/yoctoyotta1024/CLEO" title="https://github.com/yoctoyotta1024/CLEO">
+      CLEO
+     </a>
+     developed by Clara Bayley was chosen for this.
+    </p>
+    <hr/>
+    <h2 id="data">
+     Data
+    </h2>
+    <h3 id="observations-from-eureca">
+     Observations from EUREC
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <msup>
+            <mrow>
+            </mrow>
+            <mn>
+             4
+            </mn>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           ^4
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     A:
+    </h3>
+    <p>
+     EUREC
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <msup>
+            <mrow>
+            </mrow>
+            <mn>
+             4
+            </mn>
+           </msup>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           ^4
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     A was a campaign to "study factors influencing clouds in the trades, how they will respond to warming, and their link to other components of the earth system". One example is the connection between the mesoscale properties of clouds and the microphysics.
+    </p>
+    <p>
+     We want to understand how rain evaporation can be estimated from the existing data.
+    </p>
+    <img alt="705c12813338b9580b7f32c86bd196c7.png" class="jop-noMdConv" src="{{"assets/images/e3affcf4db564755bfb3ed2a3fdb6019.png" | relative_url }}" width="85%"/>
+    <p>
+     <em>
+      Stevens et al. 2021
+     </em>
+    </p>
+    <p>
+     For this, two different dataset are used:
+    </p>
+    <h4 id="cloud-composite-dataset-from-atr-bony-et-al-2022">
+     Cloud composite dataset from ATR
+     <a data-from-md="" href="/C:/Program%20Files/Joplin/resources/app.asar/10.5194/essd-14-2021-2022" title="10.5194/essd-14-2021-2022">
+      Bony et al. 2022
+     </a>
+     :
+    </h4>
+    <p>
+     Particle Size Distribution (PSD) measured by the French Aircraft ATR 42. The data has a resolution of 1Hz.
+     <br/>
+     The flight speed was roughly 100
+     <span class="joplin-editable">
+      <span class="katex">
+       <span class="katex-mathml">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <semantics>
+          <mrow>
+           <mfrac>
+            <mi>
+             m
+            </mi>
+            <mi>
+             s
+            </mi>
+           </mfrac>
+          </mrow>
+          <annotation encoding="application/x-tex">
+           \frac{m}{s}
+          </annotation>
+         </semantics>
+        </math>
+       </span>
+      </span>
+     </span>
+     <br/>
+     In total 19 research flight.
+    </p>
+    <p>
+     One objective was to sample data at cloud base (varying height) typically 600-1000m.
+    </p>
+    <h4 id="joanne-dropsonde-dataset-george-et-al-2021">
+     JOANNE dropsonde dataset
+     <a data-from-md="" href="/C:/Program%20Files/Joplin/resources/app.asar/10.5194/essd-13-5253-2021" title="10.5194/essd-13-5253-2021">
+      George et al. 2021
+     </a>
+     :
+    </h4>
+    <p>
+     Drop sondes from the HALO aircraft along a circular trajectory.
+     <br/>
+     The dropsonde data gives thermodynamic information.
+    </p>
+    <h4 id="chosing-observational-data-to-be-used-by-cleo">
+     Chosing observational data to be used by CLEO:
+    </h4>
+    <p>
+     As input, CLEO needs:
+    </p>
+    <ul>
+     <li>
+      PSD,
+     </li>
+     <li>
+      Thermodynamic profiles.
+     </li>
+    </ul>
+    <p>
+     The steps are:
+    </p>
+    <ol>
+     <li>
+      <strong>
+       Identify clouds in the cloud composite dataset
+      </strong>
+      <ul>
+       <li>
+        This means, we want to use only the PSD where the aircraft ATR flew through a cloud at cloud base.
+       </li>
+       <li>
+        To identify clouds, there do exists predefined mask.
+        <code class="inline-code">
+         cloud_mask
+        </code>
+        is true, if cloud droplets exist and the liquid water content exeeds a threshold.
+        <br/>
+        <code class="inline-code">
+         rain_mask
+        </code>
+        is true, if rain drops exist.
+       </li>
+       <li>
+        Individual clouds are consecutive true events of
+        <code class="inline-code">
+         True
+        </code>
+        values in the masks.
+       </li>
+       <li>
+        BUT: There are many very small clouds.
+        <br/>
+        Thus: Use
+        <em>
+         cloud clusters
+        </em>
+        : A cloud cluster is a connection of small individual clouds, which are seperated by a e.g. 5 s of holes between them (the aircraft flew 5s through a cloud hole.)
+        <br/>
+        <img alt="cloud_mask" class="jop-noMdConv" height="250" src="https://private-user-images.githubusercontent.com/49751662/295518147-59e3f72b-d6f8-470b-af7b-829394425c03.svg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTI0MjY0MzAsIm5iZiI6MTcxMjQyNjEzMCwicGF0aCI6Ii80OTc1MTY2Mi8yOTU1MTgxNDctNTllM2Y3MmItZDZmOC00NzBiLWFmN2ItODI5Mzk0NDI1YzAzLnN2Zz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDA2VDE3NTUzMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFiODhlOGJkMTFiM2QzMDNhNmE1ZTkyMjVhZjVlNzQ4Nzg5ZmJhMjk0MTc1OWRlNTQ0MDc2MWU4MTliOTdjYmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.WrTGG0LMMD8iLN6N0Uy_kfZHq7PFyTS_wUrNnMpY3Xo" width="413"/>
+       </li>
+       <li>
+        Here an example of a few identified clouds and cloud clusters.
+        <br/>
+        <img alt="cloud_identification" class="jop-noMdConv" src="https://nilsnevertree.github.io/sdm-eurec4a-notes/assets/images/compare_cluster_and_clouds/example_cloud_cluster_identification.png" width="80%"/>
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Using mainly clouds with high LWC
+      </strong>
+      <ul>
+       <li>
+        We chose to use clouds with high LWC because they consist of decent amount of rain drops.
+       </li>
+       <li>
+        Only(?) rain droplets will fall down and can produce rain evaporation. Cloud droplets can also grow in the simulation.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Getting the Thermodynamic profiles
+      </strong>
+      <ul>
+       <li>
+        No thermodynamic profiles exist a the same position of the ATR mearsument.
+       </li>
+       <li>
+        Choose drop sonde profiles which are close to the
+        <em>
+         cloud
+        </em>
+        <br/>
+        Max 1 hour before or after the cloud measuement
+        <br/>
+        Max 100 km away from the cloud measurement
+       </li>
+      </ul>
+     </li>
+     <li>
+      Apply a fitting to the observations
+     </li>
+    </ol>
+    <h3 id="cleo">
+     CLEO
+    </h3>
+    <p>
+     The super droplet model will be run in a 1D rainshaft mode.
+     <br/>
+     It is a lagrangian model, which simulates individual Superdroplets (SDs).
+    </p>
+    <h4 id="observation-input-processing">
+     Observation input processing:
+    </h4>
+    <p>
+     To simplify the input for CLEO, fits to the observations were used.
+    </p>
+    <ul>
+     <li>
+      PSD: Double log-normal distribution splitting cloud droplets and rain droplet distributions.
+     </li>
+     <li>
+      Thermodynamic profiles: Splitted linear regressions for mixed layer and cloud layer.
+     </li>
+    </ul>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        PSD
+       </th>
+       <th>
+        Thermodynamics
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <img alt="PSD_MSD_cloud.png" class="jop-noMdConv" src="{{"assets/images/33870ea25fe748b89904ba9744ce77a4.png" | relative_url }}" width="500"/>
+       </td>
+       <td>
+        <img alt="fitted_thermodynamics.png" class="jop-noMdConv" src="{{"assets/images/f7bb56654e9c4f77b0104b0eac8f355f.png" | relative_url }}" width="500"/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <hr/>
+    <h1 id="model-setup">
+     Model Setup:
+    </h1>
+    <h3 id="current">
+     Current
+    </h3>
+    <ul>
+     <li>
+      1D shaft model
+     </li>
+     <li>
+      0 to 1200 m altitude domain with 60 verical grid boxes of constant 20m grid spacing
+     </li>
+     <li>
+      PSD is initialized at the start of the simulation for the top grid boxes (800 - 1200 m). It can freely evolve.
+     </li>
+     <li>
+      Thermodynamics are kept constant over the simulation.
+     </li>
+    </ul>
+    <h2 id="results">
+     Results:
+    </h2>
+    <p>
+     The cloud cluster 18 was chosen, because it has reasonable amounts of rain.
+    </p>
+    <h4 id="lagrangian-view-of-random-sds-for-the-first-12-min">
+     Lagrangian view of random SDs for the first 12 min.
+    </h4>
+    <img alt="Droplet_evolution_small_whole_dataset.jpg" class="jop-noMdConv" height="287" src="{{"assets/images/045d989a2bf44951950fb68504e8f788.jpg" | relative_url }}" width="502"/>
+    <h4 id="eulerian-view">
+     Eulerian view
+    </h4>
+    <ul>
+     <li>
+      along the x-axis the radius bins are shown (log-scale)
+     </li>
+     <li>
+      along the y-axis the altitude bins are shown (20 m spacing)
+     </li>
+     <li>
+      Red shows high values and white low/no values.
+     </li>
+     <li>
+      Left is the PSD and right is MSD.
+     </li>
+    </ul>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Cluster 18 (Please note the different xscales!
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <img alt="animation.gif" class="jop-noMdConv" src="{{"assets/images/2e4d276df8574339a3c097d03e952a72.gif" | relative_url }}" width="66%"/>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <img alt="mass_loss_rain_evaporation_hist.png" class="jop-noMdConv" src="{{"assets/images/815cd93440ad4babb315c3bf0ad19602.png" | relative_url }}" width="66%"/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h1 id="whats-next">
+     Whats next:
+    </h1>
+    <h3 id="change-the-future-model-setup">
+     Change the future model setup:
+    </h3>
+    <ul>
+     <li>
+      Modify the height of PSD initilization to match the cloud base derived from the thermodynamic profiles.
+     </li>
+     <li>
+      Keep the PSD in the modeled cloud
+      <em>
+       constant
+      </em>
+      !
+      <br/>
+      The idea is that we can then get to a stationary state of droplets falling down.
+      <br/>
+      There are some open issues about this
+     </li>
+    </ul>
+    <h4 id="understand-how-rain-evaporation-is-impacted-by">
+     Understand how rain evaporation is impacted by
+    </h4>
+    <ul>
+     <li>
+      Microphysics (switch some of them off/on)
+     </li>
+     <li>
+      Thermodynamic properties
+     </li>
+     <li>
+      Using a fitted input of the distribution (continous) or the observed.
+     </li>
+     <li>
+      Difference between cloud
+     </li>
+    </ul>
+    <h4 id="understand-the-eurec4a-wide-influence">
+     Understand the EUREC4A wide influence:
+    </h4>
+    <ul>
+     <li>
+      How much rain is evaporated in total for all clouds
+     </li>
+     <li>
+      How does the evaporation differ between the individual clouds and days.
+     </li>
+    </ul>
+    <h4 id="compare-the-results-to-other-scientific-findings">
+     Compare the results to other scientific findings:
+    </h4>
+    <ul>
+     <li>
+      There exist a box model from Mampi Sakar, which we could compare the results to.
+     </li>
+     <li>
+      Compare the evolution of PSD to measurement from Lidars from ships
+     </li>
+    </ul>
+    <div id="backs">
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
