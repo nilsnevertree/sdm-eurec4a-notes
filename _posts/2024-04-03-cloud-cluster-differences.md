@@ -29,7 +29,7 @@ From top to bottom:
 - The horizontal extent of the clouds and cloud clusters.
 - The vertical extent of the clouds and cloud clusters.
 
-<img src="{{"assets/images/compare_cluster_and_clouds/all_altitudes/extent_distribution_rain_mask.png", | relative_url}}" alt="extent_distribution_rain_mask" width="66%"/>
+<img src="{{"assets/images/compare_cluster_and_clouds/extent_distribution_rain_mask.png", | relative_url}}" alt="extent_distribution_rain_mask" width="95%"/>
 
 It can be seen, that the number of identified cloud clusters is much low that these of clouds
 
@@ -38,7 +38,14 @@ It can be seen, that the number of identified cloud clusters is much low that th
 Please be aware, that this is not the real altitude of all clouds during EUREC4A, but the hwight, at which the ATR aircraft flew through a cloud which was identified in the resulting dataset.
 The strong presence of cloud below 1500m is due to the mission of the ATR to capture cloud base properties and thus it's low flight altitude.
 
-<img src="{{"assets/images/compare_cluster_and_clouds/all_altitudes/altitude_distribution_rain_mask.png", | relative_url}}" alt="altitude_distribution_rain_mask" width="66%"/>
+<img src="{{"assets/images/compare_cluster_and_clouds/altitude_distribution_rain_mask.png", | relative_url}}" alt="altitude_distribution_rain_mask" width="66%"/>
+
+
+**Clouds per cloud cluster**
+
+The number of individual clouds per cloud cluster is in the median low but can also include many individual clouds.
+<img src="{{"assets/images/compare_cluster_and_clouds/clouds_per_cluster_rain_mask.png", | relative_url}}" alt="altitude_distribution_rain_mask" width="66%"/>
+
 
 
 
@@ -49,8 +56,9 @@ In the table below, the same figures as above can be seen but for two different 
 
 | Distribution of: |``rain_mask``|``cloud_mask``|
 | -  | - | - |
-|**Extent**|![Image]({{"assets/images/compare_cluster_and_clouds/all_altitudes/extent_distribution_rain_mask.png", | relative_url }})|![Image]({{"assets/images/compare_cluster_and_clouds/all_altitudes/extent_distribution_cloud_mask.png", | relative_url }})|
-|**Altitude**|![Image]({{"assets/images/compare_cluster_and_clouds/all_altitudes/altitude_distribution_rain_mask.png", | relative_url }})|![Image]({{"assets/images/compare_cluster_and_clouds/all_altitudes/altitude_distribution_cloud_mask.png", | relative_url }})|
+|**Extent**|![Image]({{"assets/images/compare_cluster_and_clouds/extent_distribution_rain_mask.png" | relative_url }})|![Image]({{"assets/images/compare_cluster_and_clouds/extent_distribution_cloud_mask.png" | relative_url }})|
+|**Altitude**|![Image]({{"assets/images/compare_cluster_and_clouds/altitude_distribution_rain_mask.png" | relative_url }})|![Image]({{"assets/images/compare_cluster_and_clouds/altitude_distribution_cloud_mask.png" | relative_url }})|
+|**Clouds per cloud cluster**|![Image]({{"assets/images/compare_cluster_and_clouds/clouds_per_cluster_rain_mask.png" | relative_url }})|![Image]({{"assets/images/compare_cluster_and_clouds/clouds_per_cluster_cloud_mask.png" | relative_url }})|
 
 **Footnotes**
 
